@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "532671140616",
+    "project_id": "kare-129da",
+    "storage_bucket": "kare-129da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532671140616:android:e3557e568b6c86de2112bd",
+        "android_client_info": {
+          "package_name": "com.example.secure_kare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRjSsCLtnBmsJ064X8jxUTQYAM0AETMpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532671140616:android:cab5411f0d3f1c002112bd",
+        "android_client_info": {
+          "package_name": "com.example.securekare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRjSsCLtnBmsJ064X8jxUTQYAM0AETMpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
