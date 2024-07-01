@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
             // primarySwatch: Colors.blue,
           ),
           home: kIsWeb
-              ? AdminLogin()
+              ? AdminHome()
               // AdminHome()
               : ScreenSplash(),
         ));

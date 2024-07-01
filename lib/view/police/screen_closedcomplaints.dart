@@ -65,7 +65,7 @@ class ScreenClosedComplaints extends StatelessWidget {
                           leading: CircleAvatar(
                             backgroundImage: AssetImage(workprovider.person),
                           ),
-                          title: Text(data[index].reportid.toString(),
+                          title: Text(data[index].from,
                               style: GoogleFonts.alata()),
                           subtitle: Text(
                             "This case was closed",

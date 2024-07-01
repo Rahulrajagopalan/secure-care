@@ -132,7 +132,7 @@ class AdminController with ChangeNotifier {
 
   // Eployees
   List<WorkersModel> listOfPendingWorkers = [];
-  Future<List<WorkersModel>> getPendingEMployees() async {
+  Future<List<WorkersModel>> getPendingEmployees() async {
     final snapshot = await db.collection("NEW WORKERS").get();
 
     return listOfPendingWorkers =

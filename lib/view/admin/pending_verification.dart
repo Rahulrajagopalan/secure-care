@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
@@ -19,7 +20,7 @@ class _ScreenPendingVerificationsState
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: AdminController().getPendingEMployees(),
+        future: AdminController().getPendingEmployees(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -56,7 +57,7 @@ class _ScreenPendingVerificationsState
                                 width: 10,
                               ),
                               Text(
-                                data[index].workersname!,
+                                data[index].id!,
                                 style: GoogleFonts.signikaNegative(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               )
@@ -186,10 +187,14 @@ class _ScreenPendingVerificationsState
                                                 BorderRadius.circular(5)),
                                         backgroundColor: const Color.fromARGB(
                                             255, 42, 56, 133)),
-                                    onPressed: () {
-                                      AdminController()
+                                    onPressed: () async {
+                                      print(data[index].id);
+                                      await AdminController()
                                           .acceptNewWorker(data[index], context)
                                           .then((value) {
+                                            print(data[index].id);
+                                        AdminController()
+                                            .rejectNewWorker(data[index].id);
                                         setState(() {});
                                       });
                                     },
@@ -213,9 +218,7 @@ class _ScreenPendingVerificationsState
                                       AdminController()
                                           .rejectNewWorker(data[index].id)
                                           .then((value) {
-                                        setState(() {
-
-                                        });
+                                        setState(() {});
                                       });
                                     },
                                     child: Text("Reject",

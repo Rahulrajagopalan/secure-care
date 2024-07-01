@@ -79,7 +79,7 @@ class _ScreenNewComplaintsState extends State<ScreenNewComplaints> {
                                       // backgroundImage:
                                       //     AssetImage('workprovider.person'),
                                       ),
-                                  title: Text(data[index].reportid.toString(),
+                                  title: Text(data[index].from,
                                       style: GoogleFonts.alata()),
                                   subtitle: Text(
                                     "Reported a new complaint",

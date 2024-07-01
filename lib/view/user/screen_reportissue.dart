@@ -76,8 +76,8 @@ class ScreenReportIssue extends StatelessWidget {
                           reportManagerissues:
                               funprovider.reportproblemcontroller.text,
                           id: id,
-                          from: "User "
-                          // reportname: funprovider.workname.toString(),
+                          // from: "User "
+                          from: funprovider.workname.toString(),
                           ),
                       reportid,
                       id);

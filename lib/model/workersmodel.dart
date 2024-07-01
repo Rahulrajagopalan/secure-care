@@ -32,7 +32,7 @@ class WorkersModel {
         "workerspassword": workerspassword,
         "workerimage": workerimage,
         "agencyId": agencyId,
-        "id": docId,
+        "id": id,
         'usertype': selectedusertype,
         // 'indentity': indentity,
         'workassign': workassaign,
@@ -41,6 +41,7 @@ class WorkersModel {
     return WorkersModel(
       workersname: json['workersname'],
       agencyId: json['agencyId'],
+      id: json['id'],
       workersplace: json['workersplace'],
       workersage: json['workersage'],
       workersemail: json['workersemail'],

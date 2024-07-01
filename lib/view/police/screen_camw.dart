@@ -37,7 +37,7 @@ class ScreenCompamw extends StatelessWidget {
         }),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 9),
+        padding: const EdgeInsets.only(left: 3),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -73,105 +73,102 @@ class ScreenCompamw extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ScreenAgencies(),
-                      ));
-                    },
-                    child: Container(
-                      width: 110,
-                      height: 130,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [BoxShadow(blurRadius: 2)],
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.add_home_work,
-                            size: 45,
-                          ),
-                          Text(
-                            "Agencies",
-                            style: GoogleFonts.signikaNegative(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                        ],
-                      ),
+            Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ScreenAgencies(),
+                    ));
+                  },
+                  child: Container(
+                    width: 110,
+                    height: 130,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [BoxShadow(blurRadius: 2)],
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.add_home_work,
+                          size: 45,
+                        ),
+                        Text(
+                          "Agencies",
+                          style: GoogleFonts.signikaNegative(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ScreenManagers(),
-                      ));
-                    },
-                    child: Container(
-                      width: 110,
-                      height: 130,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [BoxShadow(blurRadius: 2)],
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.supervised_user_circle,
-                            size: 45,
-                          ),
-                          Text(
-                            "Managers",
-                            style: GoogleFonts.signikaNegative(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                        ],
-                      ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ScreenManagers(),
+                    ));
+                  },
+                  child: Container(
+                    width: 110,
+                    height: 130,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [BoxShadow(blurRadius: 2)],
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.supervised_user_circle,
+                          size: 45,
+                        ),
+                        Text(
+                          "Managers",
+                          style: GoogleFonts.signikaNegative(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ScreenWorkers(),
-                      ));
-                    },
-                    child: Container(
-                      width: 110,
-                      height: 130,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [BoxShadow(blurRadius: 2)],
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.supervisor_account,
-                            size: 45,
-                          ),
-                          Text(
-                            "Workers",
-                            style: GoogleFonts.signikaNegative(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                        ],
-                      ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ScreenWorkers(),
+                    ));
+                  },
+                  child: Container(
+                    width: 110,
+                    height: 130,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [BoxShadow(blurRadius: 2)],
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.supervisor_account,
+                          size: 45,
+                        ),
+                        Text(
+                          "Workers",
+                          style: GoogleFonts.signikaNegative(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             )
           ],
         ),
