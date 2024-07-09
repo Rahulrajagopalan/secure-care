@@ -54,6 +54,9 @@ class ScreenManagers extends StatelessWidget {
         stream: policeprovider.getManeger().asStream(),
         builder: (context, snapshot) {
           final data = policeprovider.maneger;
+          if(snapshot.connectionState== ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator());
+          }
           return ListView.separated(
             itemCount: data.length,
             itemBuilder: (context, index) {

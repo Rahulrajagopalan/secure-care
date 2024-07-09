@@ -50,6 +50,9 @@ class ScreenWorkers extends StatelessWidget {
       body: StreamBuilder(
         stream: workprovider.acceptedworkers().asStream(),
         builder: (context, snapshot) {
+          if(snapshot.connectionState== ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator());
+          }
           final data = workprovider.worker;
           return data.isEmpty
               ? Center(

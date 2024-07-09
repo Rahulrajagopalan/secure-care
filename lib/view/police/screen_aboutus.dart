@@ -30,22 +30,21 @@ class ScreenAboutUs extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: SafeArea(
-          child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: 500,
-              height: 680,
-              decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(blurRadius: 1)],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  '''Thank you for considering [Company Name] for your career path. We're excited about the opportunity to learn more about you through your registration application.
+      body: Column(
+              children: [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 500,
+          height: 600,
+          decoration: BoxDecoration(
+              boxShadow: [BoxShadow(blurRadius: 1)],
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10)),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              '''Thank you for considering [Company Name] for your career path. We're excited about the opportunity to learn more about you through your registration application.
                   
                   At [Company Name], we're driven by innovation, collaboration, and a commitment to excellence. Our mission is to [briefly state mission], and our culture is built on values like [list key values].
                   
@@ -60,14 +59,14 @@ class ScreenAboutUs extends StatelessWidget {
                   [Your Position/Department]
                   
                   [Company Name]''',
-                  style: GoogleFonts.nunitoSans(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-              ),
+              style: GoogleFonts.nunitoSans(
+                  color: Colors.black, fontWeight: FontWeight.bold),
             ),
-          )
-        ],
-      )),
+          ),
+        ),
+      )
+              ],
+            ),
     );
   }
 }

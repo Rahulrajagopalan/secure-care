@@ -288,8 +288,9 @@ class WorkProvider extends ChangeNotifier {
 
   int intexnumber = 0;
   managerdrawer(context) {
+    double high = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 400, top: 50, right: 150),
+      padding: EdgeInsets.only(bottom: high/2.5, top: 50, right: 150),
       child: Drawer(
         backgroundColor: Colors.black,
         shape: const RoundedRectangleBorder(

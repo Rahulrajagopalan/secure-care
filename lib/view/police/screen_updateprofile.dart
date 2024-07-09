@@ -56,7 +56,7 @@ class ScreenUpdateProfile extends StatelessWidget {
             ),
             child: Container(
               width: 400,
-              height: 600,
+              height: MediaQuery.of(context).size.height*.6,
               decoration: BoxDecoration(
                   color: Color.fromARGB(255, 246, 244, 244),
                   borderRadius: BorderRadius.circular(10),

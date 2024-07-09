@@ -770,7 +770,7 @@ class FunProvider extends ChangeNotifier {
 
   Stream<List<ProjectDetailsModel>> getInstitutionsStream() {
     return FirebaseFirestore.instance
-        .collection('PROJECT')
+        .collection('PROJECT').where("manager")
         .snapshots()
         .map((snapshot) {
       return snapshot.docs.map((doc) {

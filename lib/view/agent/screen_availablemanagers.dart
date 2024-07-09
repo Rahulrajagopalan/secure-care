@@ -11,9 +11,14 @@ import 'package:secure_kare/viewmodel/agent_controller.dart';
 import 'package:secure_kare/viewmodel/function_provider.dart';
 import 'package:secure_kare/viewmodel/ui_work_provider.dart';
 
-class ScreenAgentAvailableManagers extends StatelessWidget {
+class ScreenAgentAvailableManagers extends StatefulWidget {
   ScreenAgentAvailableManagers({super.key});
 
+  @override
+  State<ScreenAgentAvailableManagers> createState() => _ScreenAgentAvailableManagersState();
+}
+
+class _ScreenAgentAvailableManagersState extends State<ScreenAgentAvailableManagers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +53,7 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircleAvatar(),
+                    child: CircularProgressIndicator(),
                   );
                 }
                 final data = ctl.currentAgent;
@@ -80,7 +85,7 @@ class ScreenAgentAvailableManagers extends StatelessWidget {
                         height: 20,
                       ),
                       Text(
-                        " Managers",
+                        "Managers",
                         style: GoogleFonts.balthazar(
                           fontSize: 20,
                         ),

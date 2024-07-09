@@ -8,15 +8,32 @@ import 'package:secure_kare/view/agent/screen_homeagent.dart';
 import 'package:secure_kare/viewmodel/agent_controller.dart';
 import 'package:secure_kare/viewmodel/function_provider.dart';
 
-class ScreenAddManager extends StatelessWidget {
-  final agentmanagername = TextEditingController();
-  final agentmanagerplace = TextEditingController();
-  final agentmanagerage = TextEditingController();
-  final agentmanageremail = TextEditingController();
-  final agentmanagerpassword = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+class ScreenAddManager extends StatefulWidget {
+
   ScreenAddManager({super.key});
+
+  @override
+  State<ScreenAddManager> createState() => _ScreenAddManagerState();
+}
+enum Gender { male, female}
+String? gender;
+
+class _ScreenAddManagerState extends State<ScreenAddManager> {
+  Gender? genderSelect = Gender.male;
+  final agentmanagername = TextEditingController();
+
+  final agentmanagerplace = TextEditingController();
+
+  final agentmanagerage = TextEditingController();
+
+  final agentmanageremail = TextEditingController();
+
+  final agentmanagerpassword = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
   String? imageUrl;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -196,6 +213,51 @@ class ScreenAddManager extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                              children: [
+                                const Text(
+                                  "Male",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Radio<Gender>(
+                                  value: Gender.male,
+                                  groupValue: genderSelect,
+                                  onChanged: (Gender? value) {
+                                    setState(() {
+                                      genderSelect = value;
+                                      gender= "male";
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                    Column(
+                              children: [
+                                const Text(
+                                  "Female",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Radio<Gender>(
+                                  value: Gender.female,
+                                  groupValue: genderSelect,
+                                  onChanged: (Gender? value) {
+                                    setState(() {
+                                      genderSelect = value;
+                                      gender= "female";
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                            
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 Consumer<FunProvider>(builder: (context, funProvider, chuld) {
                   return ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -244,6 +306,7 @@ class ScreenAddManager extends StatelessWidget {
                                         managerplace: agentmanagerplace.text,
                                         managerage: agentmanagerage.text,
                                         manageremail: agentmanageremail.text,
+                                        managergender: gender,
                                         managerpassword:
                                             agentmanagerpassword.text,
                                         managerimage: imageUrl),)

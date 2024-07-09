@@ -7,6 +7,7 @@ class ManagerModel {
   // String? managerid;
   String? manageremail;
   String? managerimage;
+  String? managergender;
   String? id;
 
   String? managerpassword;
@@ -17,6 +18,7 @@ class ManagerModel {
       required this.managerage,
       required this.manageremail,
       required this.managerpassword,
+      required this.managergender,
       required this.managerimage,
       this.id});
 
@@ -31,6 +33,7 @@ class ManagerModel {
         "managerage": managerage,
         "manageremail": manageremail,
         "managerpassword": managerpassword,
+        "managergender": managergender,
         "managerimage": managerimage,
       };
   factory ManagerModel.fromJson(Map<String, dynamic> json) {
@@ -41,6 +44,7 @@ class ManagerModel {
       managerage: json["managerage"],
       manageremail: json["manageremail"],
       managerpassword: json["managerpassword"],
+      managergender: json["managergender"],
       managerimage: json["managerimage"],
     );
   }

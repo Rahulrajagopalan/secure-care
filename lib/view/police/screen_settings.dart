@@ -19,52 +19,53 @@ class ScreenSettings extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: SafeArea(
-          child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: 500,
-              height: 760,
-              decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(blurRadius: 3)],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(CupertinoIcons.question_circle),
-                      Text(
-                        "Help",
-                        style: GoogleFonts.nunitoSans(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                          onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Sign out",
-                        style: GoogleFonts.nunitoSans(
-                            color: Colors.red, fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                          onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
-                    ],
-                  )
-                ],
-              ),
+      body: Column(
+              children: [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Container(
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+                boxShadow: [BoxShadow(blurRadius: 3)],
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(CupertinoIcons.question_circle),
+                    Text(
+                      "Help",
+                      style: GoogleFonts.nunitoSans(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Sign out",
+                      style: GoogleFonts.nunitoSans(
+                          color: Colors.red, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))
+                  ],
+                )
+              ],
             ),
-          )
-        ],
-      )),
+          ),
+        ),
+      )
+              ],
+            ),
     );
   }
 }

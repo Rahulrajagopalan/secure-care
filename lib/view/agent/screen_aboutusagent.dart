@@ -39,7 +39,7 @@ class ScreenAgentAboutUs extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               width: 500,
-              height: 760,
+              height: 600,
               decoration: BoxDecoration(
                   boxShadow: [BoxShadow(blurRadius: 1)],
                   color: Colors.white,
