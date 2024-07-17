@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -32,6 +34,9 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
   ManagerModel? selectedManager;
   @override
   Widget build(BuildContext context) {
+    void manSelect(selected){
+      selectedManager = selected;
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -286,6 +291,8 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                               .toList(),
                           onChanged: (selected) {
                             selectedManager = selected;
+                            manSelect(selected);
+                            // log(selected!.id.toString());
                           });
                     }),
                 const SizedBox(
@@ -309,7 +316,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                               imageUrl = provider.imageurl;
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(SnackBar(
-                                backgroundColor: Colors.red,
+                                backgroundColor: Colors.green,
                                 content: Text(
                                   "Image uploaded",
                                   style: GoogleFonts.plusJakartaSans(),
@@ -366,7 +373,7 @@ class _ScreenAgentAddProjectState extends State<ScreenAgentAddProject> {
                             });
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              backgroundColor: Colors.red,
+                              backgroundColor: Colors.green,
                               content: Text(
                                 "Upload project image",
                                 style: GoogleFonts.plusJakartaSans(),

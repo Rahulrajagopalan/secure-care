@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:secure_kare/view/manager/screen_home_manager.dart';
 import 'package:secure_kare/view/user/screen_user_home.dart';
+import 'package:secure_kare/viewmodel/agent_controller.dart';
 import 'package:secure_kare/viewmodel/function_provider.dart';
 import 'package:secure_kare/viewmodel/ui_work_provider.dart';
 
@@ -35,41 +36,74 @@ class ScreenManagernotifications extends StatelessWidget {
                   },
                   icon: Icon(Icons.arrow_circle_left_outlined)),
             ),
-            body: Column(
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                data.isEmpty
-                    ? Center(
-                        child: Text('No report'),
-                      )
-                    : Expanded(
+            body: Consumer<AgentController>(builder: (context, controler, child) {
+              return FutureBuilder(future: controler.fetchAlert(), builder: (context, snapshot){
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              final data = controler.listOfAlert;
+              return Padding(
+                padding: const EdgeInsets.all(5),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(
+                    children: [
+                      Expanded(
                         child: ListView.builder(
                           itemCount: data.length,
                           itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Card(
-                                color: const Color.fromARGB(255, 238, 236, 235),
-                                child: ListTile(
-                                  leading: CircleAvatar(
-                                    radius: 5,
-                                    backgroundColor: Colors.black,
-                                  ),
-                                  title: Text(
-                                    "Your Complaints (${data[index].reportManagerissues.toString()}) is Registered On nearby Police Station ",
-                                    style: GoogleFonts.overpass(
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                            return ListTile(
+                              leading: CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage(workprovider.person)),
+                              title: SizedBox(
+                                width: 100,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    // Text(
+                                    //   data[index].id.toString(),
+                                    //   style: GoogleFonts.amaranth(
+                                    //       fontSize: 12,
+                                    //       fontWeight: FontWeight.bold),
+                                    // ),
+                                    Text(
+                                      data[index].subject.toString(),
+                                      style: GoogleFonts.amaranth(
+                                          color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      data[index]
+                                          .description
+                                          .toString(),
+                                      style: GoogleFonts.nunitoSans(
+                                          color: Colors.black, fontSize: 12),
+                                    )
+                                  ],
                                 ),
                               ),
+                              // subtitle: Padding(
+                              //   padding: const EdgeInsets.only(left: 210),
+                              //   child: Text(
+                              //     "10 minutes ago",
+                              //     style: GoogleFonts.quicksand(fontSize: 12),
+                              //   ),
+                              // ),
                             );
                           },
                         ),
                       )
-              ],
-            ),
+                    ],
+                  ),
+                ),
+              );
+              });
+            },)
           );
         });
   }

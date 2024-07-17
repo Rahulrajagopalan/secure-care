@@ -6,8 +6,8 @@ import 'package:secure_kare/viewmodel/ui_work_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ScreenEmployeeDetails extends StatelessWidget {
-  const ScreenEmployeeDetails({super.key});
-
+  ScreenEmployeeDetails({super.key, required this.workerName});
+  String workerName;
   @override
   Widget build(BuildContext context) {
     final workprovider = Provider.of<WorkProvider>(context);
@@ -29,7 +29,7 @@ class ScreenEmployeeDetails extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          "Employee Details",
+          workerName.toUpperCase(),
           style: GoogleFonts.amaranth(color: Colors.black),
         ),
         centerTitle: true,
@@ -42,71 +42,74 @@ class ScreenEmployeeDetails extends StatelessWidget {
               ))
         ],
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 100,
-            width: 100,
-            child: CircleAvatar(
-              backgroundImage: AssetImage(workprovider.debruyne),
-            ),
-          ),
-          Text(
-            "John Hernandez",
-            style:
-                GoogleFonts.amaranth(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          const Icon(
-            Icons.location_on,
-            color: Colors.red,
-          ),
-          Container(
-            width: 120,
-            height: 40,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 68, 76, 118),
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(
-              child: Text(
-                "Attendance",
-                style: GoogleFonts.nunitoSans(color: Colors.white),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: CircleAvatar(
+                backgroundImage: AssetImage(workprovider.debruyne),
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          new CircularPercentIndicator(
-            radius: 60.0,
-            lineWidth: 5.0,
-            percent: 1.0,
-            center: new Text("74%"),
-            progressColor: Colors.green,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            width: 120,
-            height: 40,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 156, 28, 19),
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(
-              child: Text(
-                "Perfomance",
-                style: GoogleFonts.nunitoSans(color: Colors.white),
+            Text(
+              workerName,
+              style:
+                  GoogleFonts.amaranth(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            const Icon(
+              Icons.location_on,
+              color: Colors.red,
+            ),
+            Container(
+              width: 120,
+              height: 40,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 68, 76, 118),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Center(
+                child: Text(
+                  "Attendance",
+                  style: GoogleFonts.nunitoSans(color: Colors.white),
+                ),
               ),
             ),
-          ),
-          new CircularPercentIndicator(
-            radius: 60.0,
-            lineWidth: 5.0,
-            percent: 1.0,
-            center: new Text("89%"),
-            progressColor: Colors.red,
-          ),
-        ],
+            SizedBox(
+              height: 10,
+            ),
+            new CircularPercentIndicator(
+              radius: 60.0,
+              lineWidth: 5.0,
+              percent: 1.0,
+              center: new Text("74%"),
+              progressColor: Colors.green,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 120,
+              height: 40,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 156, 28, 19),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Center(
+                child: Text(
+                  "Perfomance",
+                  style: GoogleFonts.nunitoSans(color: Colors.white),
+                ),
+              ),
+            ),
+            new CircularPercentIndicator(
+              radius: 60.0,
+              lineWidth: 5.0,
+              percent: 1.0,
+              center: new Text("89%"),
+              progressColor: Colors.red,
+            ),
+          ],
+        ),
       ),
     );
   }

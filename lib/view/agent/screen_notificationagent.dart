@@ -37,14 +37,14 @@ class ScreenNotificationAgent extends StatelessWidget {
       ),
       body: Consumer<AgentController>(builder: (context, controler, child) {
         return FutureBuilder(
-            future: controler.fetchCurrentagentData(),
+            future: controler.fetchAlert(),
             builder: (context, snpahsot) {
               if (snpahsot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               }
-              final data = controler.listofReporst;
+              final data = controler.listOfAlert;
               return Padding(
                 padding: const EdgeInsets.all(5),
                 child: Container(
@@ -65,21 +65,22 @@ class ScreenNotificationAgent extends StatelessWidget {
                               title: SizedBox(
                                 width: 100,
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
+                                    // Text(
+                                    //   data[index].id.toString(),
+                                    //   style: GoogleFonts.amaranth(
+                                    //       fontSize: 12,
+                                    //       fontWeight: FontWeight.bold),
+                                    // ),
                                     Text(
-                                      data[index].id.toString(),
+                                      data[index].subject.toString(),
                                       style: GoogleFonts.amaranth(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      data[index].from,
-                                      style: GoogleFonts.nunitoSans(
-                                          color: Colors.black, fontSize: 12),
+                                          color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       data[index]
-                                          .reportManagerissues
+                                          .description
                                           .toString(),
                                       style: GoogleFonts.nunitoSans(
                                           color: Colors.black, fontSize: 12),

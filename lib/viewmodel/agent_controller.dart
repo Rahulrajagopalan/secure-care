@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:secure_kare/model/agentmodel.dart';
+import 'package:secure_kare/model/alertmodel.dart';
 import 'package:secure_kare/model/managermodel.dart';
 import 'package:secure_kare/model/projectmodel.dart';
 import 'package:secure_kare/model/report_model.dart';
@@ -18,6 +19,12 @@ class AgentController with ChangeNotifier {
   //   agentList =
   //       snapshot.docs.map((e) => AgentModel.fromJson(e.data())).toList();
   // }
+  List<Alertmodel> listOfAlert = [];
+  Future<List<Alertmodel>> fetchAlert() async {
+    final snapshot = await db.collection("Alert").get();
+    return listOfAlert =
+        snapshot.docs.map((e) => Alertmodel.fromJson(e.data()!)).toList();
+  }
 
   AgentModel? currentAgent;
   Future fetchCurrentagentData() async {
@@ -116,7 +123,8 @@ class AgentController with ChangeNotifier {
     try {
       await auth
           .createUserWithEmailAndPassword(
-              email: managerModel.manageremail!, password: managerModel.managerpassword!)
+              email: managerModel.manageremail!,
+              password: managerModel.managerpassword!)
           .then((value) {
         String uid = value.user!.uid;
 
@@ -153,7 +161,7 @@ class AgentController with ChangeNotifier {
   //  ------------PROJECT
 
   Future addprojectdetails(ProjectDetailsModel projectModel, managerID) async {
-    final doc = db.collection("PROJECT").doc();
+    final doc = db.collection("PROJECT").doc(managerID);
 
     doc.set(projectModel.toJson(doc.id, managerID));
   }

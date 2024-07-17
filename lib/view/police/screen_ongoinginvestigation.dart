@@ -53,7 +53,7 @@ class ScreenOngoingInvestigation extends StatelessWidget {
             Expanded(child: Consumer<PoliceControler>(
               builder: (context, instnce, _) {
                 return FutureBuilder(
-                  future: instnce.fetchCompleint('proceses'),
+                  future: instnce.fetchCompleint('reported'),
                   builder: (context, snapshot) {
                     final data = instnce.userreport;
                     return data.isEmpty

@@ -39,6 +39,7 @@ class ManagerModel {
   factory ManagerModel.fromJson(Map<String, dynamic> json) {
     return ManagerModel(
       agencyId: json["agencyId"],
+      id: json["id"],
       managername: json["managername"],
       managerplace: json["managerplace"],
       managerage: json["managerage"],

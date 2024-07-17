@@ -68,13 +68,13 @@ class ScreenAgentAvailableWorkers extends StatelessWidget {
                       ),
                       SizedBox(
                           height: 30,
-                          width: 88,
+                          width: 120,
                           child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
                                   shape: BeveledRectangleBorder(
                                       borderRadius: BorderRadius.circular(5))),
                               onPressed: () {},
-                              child: Text("SelectAll",
+                              child: Text("Select All",
                                   style: GoogleFonts.amaranth(
                                     color: Colors.black,
                                   )))),
@@ -87,7 +87,7 @@ class ScreenAgentAvailableWorkers extends StatelessWidget {
                     padding: const EdgeInsets.all(15),
                     child: Container(
                       width: 500,
-                      height: 600,
+                      height: 550,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: const [BoxShadow(blurRadius: 1)],

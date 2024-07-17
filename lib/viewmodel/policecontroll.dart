@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:secure_kare/model/agentmodel.dart';
 import 'package:secure_kare/model/managermodel.dart';
 import 'package:secure_kare/model/report_model.dart';
@@ -11,6 +12,10 @@ import 'package:secure_kare/model/workersmodel.dart';
 class PoliceControler with ChangeNotifier {
   final auth = FirebaseAuth.instance;
   final db = FirebaseFirestore.instance;
+
+  addAlert(Map<String, dynamic> alertMap) async {
+    await FirebaseFirestore.instance.collection("Alert").add(alertMap);
+  }
 
   List<Reports> userreport = [];
   Future fetchCompleint(String status) async {

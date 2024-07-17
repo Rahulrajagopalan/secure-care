@@ -143,7 +143,7 @@ class ScreenSelectIdentity extends StatelessWidget {
                       child: Image.asset(workprovider.passport),
                     ),
                     const SizedBox(
-                      width: 80,
+                      width: 50,
                     ),
                     Text(
                       "PASSPORT",

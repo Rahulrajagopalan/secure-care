@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,8 +10,9 @@ import 'package:secure_kare/view/manager/screen_yourproject.dart';
 
 class ScreenProjectDetails extends StatelessWidget {
   ScreenProjectDetails({super.key});
-  final CollectionReference project =
-      FirebaseFirestore.instance.collection("PROJECT");
+  final project = FirebaseFirestore.instance
+      .collection("Work Assign")
+      .where("workid", isEqualTo: FirebaseAuth.instance.currentUser!.uid);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +20,11 @@ class ScreenProjectDetails extends StatelessWidget {
       stream: project.snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }
-        var projectname = snapshot.data!.docs.first['projectName'];
-        var projectplace = snapshot.data!.docs.first['place'];
-        var projectenddate = snapshot.data!.docs.first['endDate'];
-        var projectstartdate = snapshot.data!.docs.first['startDate'];
+        var projectname = snapshot.data!.docs.first['workename'];
+        var projectplace = snapshot.data!.docs.first['placework'];
+        var projectManager = snapshot.data!.docs.first['manager'];
 
         return Scaffold(
           backgroundColor: Colors.white,
@@ -75,17 +78,7 @@ class ScreenProjectDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "(${projectstartdate})",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
-                  ),
-                  Text(
-                    "to",
-                    style:
-                        GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
-                  ),
-                  Text(
-                    "(${projectenddate})",
+                    "(Manager: ${projectManager.toString().toUpperCase()})",
                     style:
                         GoogleFonts.amaranth(color: Colors.black, fontSize: 15),
                   ),
@@ -117,29 +110,30 @@ class ScreenProjectDetails extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    var projectphoto =
-                        snapshot.data!.docs[index]['projectimage'];
-                    var projectname = snapshot.data!.docs[index]['projectName'];
+                    var worktype = snapshot.data!.docs[index]['workertype'];
+                    var projectname = snapshot.data!.docs[index]['workername'];
                     return ListTile(
                       leading: SizedBox(
                           width: 150,
-                          child: projectphoto == ""
-                              ? const Icon(
-                                  CupertinoIcons.person_alt_circle_fill,
-                                  size: 60,
-                                )
-                              : SizedBox(
-                                  height: 130,
-                                  child: Image.network(
-                                    projectphoto,
-                                  ),
-                                )),
+                          child:
+                              // worktype == ""?
+                              const Icon(
+                            CupertinoIcons.person_alt_circle_fill,
+                            size: 60,
+                          )
+                          // : SizedBox(
+                          //     height: 130,
+                          //     child: Image.network(
+                          //       worktype,
+                          //     ),
+                          //   )
+                          ),
                       title: Text(
                         projectname,
                         style: GoogleFonts.amaranth(color: Colors.black),
                       ),
                       subtitle: Text(
-                        "construction worker",
+                        worktype,
                         style: GoogleFonts.amaranth(fontSize: 10),
                       ),
                       trailing: SizedBox(
@@ -151,9 +145,12 @@ class ScreenProjectDetails extends StatelessWidget {
                                 backgroundColor:
                                     Color.fromARGB(255, 21, 41, 153)),
                             onPressed: () {
+                              log(projectname);
                               Navigator.of(context)
                                   .pushReplacement(MaterialPageRoute(
-                                builder: (context) => ScreenEmployeeDetails(),
+                                builder: (context) => ScreenEmployeeDetails(
+                                  workerName: projectname.toString(),
+                                ),
                               ));
                             },
                             child: Text(

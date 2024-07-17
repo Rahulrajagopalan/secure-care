@@ -99,32 +99,34 @@ class WorkProvider extends ChangeNotifier {
 
                 return AlertDialog(
                   title: Text('Assign Workers'),
-                  content: Container(
+                  content: SizedBox(
                     height: 200,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              // left: 25,
-                              // right: 25,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                // left: 25,
+                                // right: 25,
+                                ),
+                            child: Container(
+                              // width: 100,
+                              // height: 100,
+                              color: Colors.white,
+                              child: DropdownButtonFormField(
+                                items: data.map<DropdownMenuItem>((e) {
+                                  return DropdownMenuItem(
+                                      value: e,
+                                      child: Text(e.projectName.toString()));
+                                }).toList(),
+                                onChanged: (value) {
+                                  selectedoption = value;
+                                },
                               ),
-                          child: Container(
-                            // width: 100,
-                            // height: 100,
-                            color: Colors.white,
-                            child: DropdownButtonFormField(
-                              items: data.map<DropdownMenuItem>((e) {
-                                return DropdownMenuItem(
-                                    value: e,
-                                    child: Text(e.projectName.toString()));
-                              }).toList(),
-                              onChanged: (value) {
-                                selectedoption = value;
-                              },
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   actions: [
